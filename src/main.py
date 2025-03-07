@@ -3,8 +3,20 @@ from apify import Actor
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
+from pydantic import BaseModel
 from dotenv import load_dotenv
 load_dotenv()
+
+class ResponseModel(BaseModel):
+    """Automatic Structured response with """
+    company_name: str
+    company_description: str
+    company_website: str
+    company_industry: str
+    company_location: str
+    company_revenue: int
+    company_employees: int
+    company_founded_year: int
 
 async def main() -> None:
     await Actor.init()
@@ -26,17 +38,13 @@ async def main() -> None:
     )
     agent = Agent(
         model,
-        system_prompt='Be concise, reply with one sentence.',
+        result_type=ResponseModel,
+        system_prompt='You are a company research assistant. You are given a company name and you need to research the company and return the information in the structured format.',
     )
     
     result = await agent.run(f'What is the company "{company_name}" about?')  
-    print(result.data)
     
-    await Actor.push_data(
-        {
-            'response': result.data,
-        }
-    )
+    await Actor.push_data(result.data.model_dump())
 
     await Actor.exit()
     
