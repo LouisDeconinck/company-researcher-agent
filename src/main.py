@@ -17,6 +17,7 @@ class ResponseModel(BaseModel):
     company_revenue: int
     company_employees: int
     company_founded_year: int
+    number_of_actors: int
 
 async def main() -> None:
     await Actor.init()
@@ -42,18 +43,51 @@ async def main() -> None:
         system_prompt='You are a company research assistant. You are given a company name and you need to research the company and return the information in the structured format.',
     )
     
-    result = await agent.run(f'What is the company "{company_name}" about?')  
+    @agent.tool_plain
+    async def crawl_website(url: str) -> str:
+        """Crawl a website and return the content."""
+        Actor.log.info(f"Crawling website: {url}")
+        client = Actor.new_client(token=apify_api_key)
+        
+        run_input = {
+            "startUrls": [{ "url": url }],
+            "crawlerType": "cheerio",
+            "maxCrawlDepth": 1,
+            "maxCrawlPages": 10,
+        }
+        
+        try:
+            run = await client.actor("apify/website-content-crawler").call(run_input=run_input)
+            dataset = await client.dataset(run["defaultDatasetId"]).list_items()
+            urls = [item.get('url') for item in dataset.items]
+            Actor.log.info(f"Pages crawled: {', '.join(urls)}")
+            
+            # Combine text content from all crawled pages
+            all_text = []
+            for item in dataset.items:
+                if 'text' in item:
+                    all_text.append(item['text'])
+            
+            if all_text:
+                return "\n\n".join(all_text)
+            return "No content was found on the website"
+            
+        except Exception as e:
+            Actor.log.error(f"Error crawling website: {str(e)}")
+            return f"Failed to crawl website: {str(e)}"
+    
+    result = await agent.run(f'What is the company "{company_name}" about? Make sure to crawl the website and get the latest information.')  
     
     await Actor.push_data(result.data.model_dump())
 
     await Actor.exit()
-    
+
 def fetch_api_key(name: str) -> str:
     api_key = os.getenv(name)
     if api_key:
         length = len(api_key)
-        print(f"{name}: {api_key[:int(length * 0.1)]}...{api_key[-int(length * 0.1):]}")
+        Actor.log.info(f"{name}: {api_key[:int(length * 0.1)]}...{api_key[-int(length * 0.1):]}")
         return api_key
     else:
-        print(f"Error: {name} is not set in the environment variables.")
+        Actor.log.error(f"Error: {name} is not set in the environment variables.")
         return None
