@@ -9,5 +9,154 @@
 	"meta": {
 		"templateId": "python-standby"
 	},
-	"dockerfile": "./Dockerfile"
+	"dockerfile": "./Dockerfile",
+	"storages": {
+		"dataset": {
+			"actorSpecification": 1,
+			"views": {
+				"overview": {
+					"title": "Overview",
+					"transformation": {
+						"fields": [
+							"name",
+							"description",
+							"industries",
+							"annual_revenue",
+							"employees",
+							"funding",
+							"key_personnel",
+							"founded_year",
+							"website",
+							"phone",
+							"email",
+							"address",
+							"facebook",
+							"instagram",
+							"twitter",
+							"linkedin",
+							"youtube",
+							"tiktok",
+							"pinterest",
+							"reddit",
+							"github",
+							"indeed",
+							"competitors",
+							"recent_news",
+							"job_openings",
+							"report"
+						]
+					},
+					"display": {
+						"component": "table",
+						"properties": {
+							"Name": {
+								"label": "name",
+								"format": "text"
+							},
+							"Description": {
+								"label": "description",
+								"format": "text"
+							},
+							"Industries": {
+								"label": "industries",
+								"format": "array"
+							},
+							"Annual Revenue": {
+								"label": "annual_revenue",
+								"format": "number"
+							},
+							"Employees": {
+								"label": "employees",
+								"format": "number"
+							},
+							"Funding": {
+								"label": "funding",
+								"format": "text"
+							},
+							"Key Personnel": {
+								"label": "key_personnel",
+								"format": "array"
+							},
+							"Founded Year": {
+								"label": "founded_year",
+								"format": "number"
+							},
+							"Website": {
+								"label": "website",
+								"format": "link"
+							},
+							"Phone": {
+								"label": "phone",
+								"format": "text"
+							},
+							"Email": {
+								"label": "email",
+								"format": "text"
+							},
+							"Address": {
+								"label": "address",
+								"format": "text"
+							},
+							"Facebook": {
+								"label": "facebook",
+								"format": "link"
+							},
+							"Instagram": {
+								"label": "instagram",
+								"format": "link"
+							},
+							"Twitter": {
+								"label": "twitter",
+								"format": "link"
+							},
+							"LinkedIn": {
+								"label": "linkedin",
+								"format": "link"
+							},
+							"YouTube": {
+								"label": "youtube",
+								"format": "link"
+							},
+							"TikTok": {
+								"label": "tiktok",
+								"format": "link"
+							},
+							"Pinterest": {
+								"label": "pinterest",
+								"format": "link"
+							},
+							"Reddit": {
+								"label": "reddit",
+								"format": "link"
+							},
+							"GitHub": {
+								"label": "github",
+								"format": "link"
+							},
+							"Indeed": {
+								"label": "indeed",
+								"format": "link"
+							},
+							"Competitors": {
+								"label": "competitors",
+								"format": "array"
+							},
+							"Recent News": {
+								"label": "recent_news",
+								"format": "array"
+							},
+							"Job Openings": {
+								"label": "job_openings",
+								"format": "array"
+							},
+							"Report": {
+								"label": "report",
+								"format": "text"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

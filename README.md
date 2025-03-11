@@ -1,54 +1,83 @@
-## Python standby template
+The **Company Research Agent** is an advanced AI-powered solution that delivers comprehensive and actionable business intelligence on any company within minutes. Powered by Apify's robust infrastructure, this agent transforms hours of manual research into an automated process, providing you with deep insights that drive strategic decision-making.
 
-Start a new [web scraping](https://apify.com/web-scraping) project quickly and easily in Python with our Standby project template. It provides a basic structure for the [Actor](https://apify.com/actors) with [Apify SDK](https://docs.apify.com/sdk/python/) and allows you to easily add your own functionality.
+## 🚀 Key Features
 
-## Included features
+- **Comprehensive Company Profiles**: Automatically collects fundamental company data including size, revenue, founding date, headquarters location, and more
+- **Leadership Analysis**: Identifies key executives and their roles to help you understand the company's leadership structure
+- **Competitive Landscape**: Maps out major competitors to give you a clear picture of the market positioning
+- **Digital Presence Analysis**: Gathers data from the company's website, social media profiles, and online reviews
+- **Job Market Insights**: Collects current job openings to provide insights into company growth and priorities
+- **Latest News & Events**: Curates recent news to keep you updated on company developments
+- **Detailed Business Report**: Generates a comprehensive markdown report that consolidates all findings into actionable intelligence
 
-- **[Apify SDK](https://docs.apify.com/sdk/python/)** for Python - a toolkit for building Apify [Actors](https://apify.com/actors) and scrapers in Python
+## 🏆 Business Value
 
-## Resources
+- **Save 5-10 Hours Per Company**: Eliminate manual research time by automating data collection and analysis
+- **Make Informed Decisions**: Access reliable, multi-source data to drive strategic business decisions
+- **Stay Ahead of Competition**: Gain market intelligence that gives you a competitive edge
+- **Identify New Opportunities**: Discover potential partnerships, sales opportunities, or competitive threats
+- **Standardize Research Process**: Ensure consistent, high-quality intelligence for all business needs
 
-- [Actor Standby documentation](https://docs.apify.com/platform/actors/development/programming-interface/standby)
+## 🔧 Use Cases
 
+- **Sales Teams**: Research prospects before outreach to personalize pitches and identify pain points
+- **Business Development**: Evaluate potential partners or acquisition targets with comprehensive data
+- **Competitive Intelligence**: Monitor competitors to inform product strategy and market positioning
+- **Investor Research**: Perform due diligence on potential investments with automated, reliable data
+- **Recruitment**: Understand company culture and positioning to improve candidate targeting
+- **Market Research**: Gather industry insights by analyzing multiple companies in a sector
 
-## Getting started
+## 📝 Input Configuration
 
-For complete information [see this article](https://docs.apify.com/platform/actors/development#build-actor-locally). To run the actor use the following command:
-
-```bash
-apify run
+```json
+{
+  "company_name": "Tesla",
+  "additional_context": "Focus on their recent expansion in AI and robotics"
+}
 ```
 
-## Deploy to Apify
+| Field | Type | Description |
+|-------|------|-------------|
+| `company_name` | String | Name of the company to research |
+| `additional_context` | String | (Optional) Specific instructions or focus areas for the research |
 
-### Connect Git repository to Apify
+### Examples of Additional Context
 
-If you've created a Git repository for the project, you can easily connect to Apify:
+The `additional_context` field lets you customize your research focus:
 
-1. Go to [Actor creation page](https://console.apify.com/actors/new)
-2. Click on **Link Git Repository** button
+- "Focus on their sustainability initiatives and environmental impact"
+- "Looking for information on their recent merger with XYZ Corp"
+- "Interested in their European market expansion strategy"
+- "Need details on their partnership program for startups"
+- "Researching for potential investment, focus on financial stability"
 
-### Push project on your local machine to Apify
+This optional context helps the agent prioritize specific aspects of the company research and deliver more targeted results for your use case.
 
-You can also deploy the project on your local machine to Apify without the need for the Git repository.
+## 📋 Output Format
 
-1. Log in to Apify. You will need to provide your [Apify API Token](https://console.apify.com/account/integrations) to complete this action.
+The agent provides a structured JSON output containing:
 
-    ```bash
-    apify login
-    ```
+- Basic company information (name, description, industry, etc.)
+- Contact details and social media links
+- Revenue and employee count estimates
+- Funding history
+- Key executives
+- Competitor analysis
+- Recent news
+- Current job openings
+- A detailed markdown business report
 
-2. Deploy your Actor. This command will deploy and build the Actor on the Apify Platform. You can find your newly created Actor under [Actors -> My Actors](https://console.apify.com/actors?tab=my).
+## 🧩 Integration Options
 
-    ```bash
-    apify push
-    ```
+- **Apify API**: Access via direct API calls
+- **Apify SDK**: Integrate into your Node.js applications
+- **Webhooks**: Trigger actions when results are ready
+- **Scheduled Runs**: Automate regular research updates
+- **Apify Console**: Run manually through the user interface
 
-## Documentation reference
+## 💡 Tips for Best Results
 
-To learn more about Apify and Actors, take a look at the following resources:
-
-- [Apify SDK for JavaScript documentation](https://docs.apify.com/sdk/js)
-- [Apify SDK for Python documentation](https://docs.apify.com/sdk/python)
-- [Apify Platform documentation](https://docs.apify.com/platform)
-- [Join our developer community on Discord](https://discord.com/invite/jyEM2PRvMU)
+- Provide the exact company name for more accurate results
+- For companies with common names, include the industry or location
+- Add additional context to get a tailored research report
+- Allow sufficient run time for comprehensive research (typically 3-5 minutes)
