@@ -74,7 +74,8 @@ def get_company_research_prompt(company_name: str, additional_context: str, curr
 
     You can make up to 8 concurrent tool calls to gather data efficiently.
     Each tool call must have unique parameters - do not repeat identical calls.
-    Keep the total number of tool calls under 40 to avoid rate limits.
+    Keep the total number of tool calls under 20 to avoid rate limits.
+    Make your tool calls as impactful as possible to gather the most relevant data.
     
     Before submitting, verify your report includes ALL required sections and meets or exceeds ALL length, data point, and citation requirements.
     {additional_context_section}

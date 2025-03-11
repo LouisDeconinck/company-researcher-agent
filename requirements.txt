@@ -1,5 +1,5 @@
 # Feel free to add your Python dependencies below. For formatting guidelines, see:
 # https://pip.pypa.io/en/latest/reference/requirements-file-format/
 
-apify = 2.3.1
-pydantic-ai-slim[openai] = 0.0.35
+apify==2.3.1
+pydantic-ai-slim[openai]==0.0.35
